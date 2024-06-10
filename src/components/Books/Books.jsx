@@ -1,15 +1,31 @@
-import { useLoaderData } from "react-router-dom";
 import Book from "../Book/Book";
+import { useEffect, useState } from "react";
 
 
 const Books = () => {
-  const books = useLoaderData();
-  console.log(books)
+  const [books, setBooks] = useState([]);
+  const [showBooks, setShowBooks] = useState(6);
+  
+
+  useEffect( () => {
+    fetch('books.json')
+    .then(res => res.json())
+    .then(data => setBooks(data))
+  }, [])
+
+  
+
   return (
-    <div className="grid md:grid-cols-3 gap-8 mx-4">
+    <div className="my-4">
+    <div className="grid md:grid-cols-3 gap-8 mx-4 my-8">
       {
-        books.map(book => <Book key={book.bookId} book={book}></Book>)
+        books.slice(0, showBooks).map(book => <Book key={book.bookId} book={book}></Book>)
       }
+    </div>
+
+    <div className={showBooks === books.length && 'hidden'}>
+      <button onClick={() => setShowBooks(books.length)} className="btn btn-outline btn-success">Show All</button>
+    </div>
     </div>
   );
 };
