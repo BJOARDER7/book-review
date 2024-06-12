@@ -1,4 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import { saveBookPage } from "../utility/utility";
 
 
 const BookDetails = () => {
@@ -7,6 +10,11 @@ const BookDetails = () => {
   
   const book = books.find(book => book.bookId == id);
   console.log(book, id)
+
+  const handleBooksPage = () => {
+    saveBookPage(id);
+    toast('Successfully added book')
+  }
 
   return (
     <div className="mx-5">
@@ -46,12 +54,13 @@ const BookDetails = () => {
         </table>       
       </div>
       <div className="flex items-center gap-6">
-      <button className="btn btn-outline">Read</button>
-      <button className="btn btn-info">Wishlist</button>
+      <button onClick={handleBooksPage} className="btn btn-outline">Read</button>
+      <button onClick={handleBooksPage} className="btn btn-info">Wishlist</button>
       </div>
     </div>
   </div>
 </div>
+<ToastContainer />
     </div>
   );
 };
