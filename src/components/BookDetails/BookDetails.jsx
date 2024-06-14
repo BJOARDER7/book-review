@@ -1,19 +1,17 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { saveBookPage } from "../utility/utility";
 
 
 const BookDetails = () => {
   const books = useLoaderData();
   const {id} = useParams();
+  const intId = parseInt(id);
+  const book = books.find(book => book.bookId === intId);
   
-  const book = books.find(book => book.bookId == id);
-  console.log(book, id)
 
   const handleBooksPage = () => {
-    saveBookPage(id);
-    toast('Successfully added book')
+    saveBookPage(intId);    
   }
 
   return (

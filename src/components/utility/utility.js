@@ -1,4 +1,5 @@
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const getBookPage = () => {
   const getBook = localStorage.getItem('book-item');
@@ -14,7 +15,15 @@ const saveBookPage = id => {
   if(!exists){
     saveBooks.push(id);
     localStorage.setItem('book-item', JSON.stringify(saveBooks))
+    toast('Successfully you added the book');   
   }
-}
+  else {
+    toast("Already added, it cannot be duplicated!", {
+      toastId: id
+    });
+  }
+  
+  }
+  
 
 export {getBookPage, saveBookPage}
