@@ -9,7 +9,7 @@ const Book = ({book}) => {
   return (
     <Link to={`/book/${bookId}`}  className="card w-auto bg-white shadow-md rounded-lg overflow-hidden">
     <div className="flex justify-center items-center bg-[#F3F3F3] p-4 rounded-md">
-    <img className="w-28 h-44 object-cover rounded-md" src={image} alt={bookName} />
+    <img className="w-16 md:w-28 h-24 md:h-44 object-cover rounded-md" src={image} alt={bookName} />
     </div>    
     <div className=" card-body p-4">
     <div className="mt-4">

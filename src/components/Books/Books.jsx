@@ -17,7 +17,7 @@ const Books = () => {
 
   return (
     <div className="my-4">
-    <div className="grid md:grid-cols-3 gap-8 mx-4 my-8">
+    <div className="grid md:grid-cols-3 gap-4 md:gap-8 mx-2 md:mx-4 my-4 md:my-8">
       {
         books.slice(0, showBooks).map(book => <Book key={book.bookId} book={book}></Book>)
       }
