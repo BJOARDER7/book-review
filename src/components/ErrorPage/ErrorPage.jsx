@@ -1,13 +1,25 @@
 import { Link } from "react-router-dom";
+import errorImg from "../../assets/errorImg.jpg";
 
 
 const ErrorPage = () => {
   return (
-    <div>
-      <h2>404</h2>
-      <Link to="/"><button className="btn">Back to Home !</button></Link>
+    <div className="w-full flex flex-col justify-center items-center min-h-screen bg-gray-100">
+      <div className="flex justify-center items-center">
+      <img
+        src={errorImg}
+        className="max-w-full h-96 mx-auto"
+        alt="Error"
+      />
+      </div>
       
+      <Link to="/">
+        <button className="px-5 py-2 mt-4 text-white bg-[#23BE0A] rounded">
+           Back to Home !
+        </button>
+      </Link>
     </div>
+      
   );
 };
 
